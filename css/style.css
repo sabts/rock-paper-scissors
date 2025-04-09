@@ -19,6 +19,20 @@ nav ul{
     margin-bottom: 0;
 }
 body{
+    background-image: radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%);
     margin: 0;
     font-family: sans-serif;
+    min-height: 100vh;
+}
+.home-container{
+    width: 800px;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.game-modes{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
