@@ -12,44 +12,44 @@
             <span class="score-title">YOU</span>
             <span id="points-user" class="score-points">0</span>
         </div>
+        <img src="/assets/logo.svg" class="logo" alt="game logo">
         <div class="score">
             <span class="score__title">PC</span>
-            <span id="points-pc" class="score__points">0</span>
+            <span id="points-pc" class="score-points">0</span>
           </div>
     </header>
     <main>
-        <div id="game-icon" class="game-items game-item-simple">
-            <div class="game-item game-item--paper-simple" data-icon="paper">
+        <div id="game-icon" class="game-item-simple">
+            <div class="game-item paper game-position-paper" data-icon="paper">
                 <img src="/assets/icon-paper.svg" class="game-item__image" alt="icon paper">
             </div>
-            <div class="game-item game-item--rock-simple" data-icon="Scissors">
+            <div class="game-item scissor" data-icon="Scissors">
                 <img src="/assets/icon-scissors.svg" class="game-item__image" alt="icon sissors">
             </div>
-            <div class="game-item game-item--rock-simple" data-icon="rock">
+            <div class="game-item rock" data-icon="rock">
                 <img src="/assets/icon-rock.svg" class="game-item__image" alt="icon rock">
             </div>
         </div>
         <div id="games-result" class="game-result hide">
-            <div>
-                <h2>Your Picked</h2>
-                <div class="game-item game-item-result">
-                    <img id="picked-user-image" src="/assets/icon-scissors.svg">
+            <div class="result-container">
+                <h2 class="text">Your Picked</h2>
+                <div class="game-item result">
+                    <img id="picked-user-image" src="/assets/icon-scissors.svg" alt="User Pick">
                 </div>
             </div>
             <div>
-                <h2 id="game-result">YOU WIN</h2>
-                <button id="play-again">PLAY AGAIN</button>
+                <h2 class="text" id="game-result">YOU WIN</h2>
+                <button id="play-again" class="button button-primary">PLAY AGAIN</button>
             </div>
             <div>
-                <h2>PC Picked</h2>
-                <div class="game-item game-item-reault">
-                    <img id="picked-pc-image" src="/assets/icon-scissors.svg">
+                <h2 class="text">PC Picked</h2>
+                <div class="game-item result">
+                    <img id="picked-pc-image" src="/assets/icon-scissors.svg" alt="PC Pick">
                 </div>
             </div>
-
         </div>
+    <button id="rules" class="button button-secondary">RULES</button>
     </main>
-
-
     <script src="./js/scripts.js"></script>
   </body>
+  
