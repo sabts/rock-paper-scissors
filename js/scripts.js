@@ -4,21 +4,29 @@ const gameOptionsElement = document.getElementById("game-icon");
 //Results
 const userResultgameElement = document.getElementById("games-result");
 
-let userOption = "";
-let pcOption = "";
+
+const gameOptions = ["paper","scissor", "rock"];
+const gameOptionsAdvanced = ["paper","scissor","rock","spok","lagarto"]
+
+let userChoose = "";
+let pcChoose = "";
 
 // Detectar dónde hacemos click
 // Guardar nuestra jugada
 const saveUserOption = event => {
-  userOption = event.target.dataset.icon;
+  userChoose = event.target.dataset.icon;
 };
 
-//Generar una jugada aleatoria para el ordenador y guardarla
-const userSelectOption = () => {
-  //NO BUCLES
-  if (saveUserOption === true) {
-    pcOption = Math.floor(Math.random() * gameOptionsElement.dataset.icon);
-  }
-};
+//Generar una jugada aleatoria para el ordenador y guardarla 
+//Simple
+const randomPcPlay = () => {
+  gameOptions.playerSelect = true;
+  const randomPlay = Math.floor(Math.random() * gameOptions.length)
+  const pcPlay = gameOptions[randomPlay];
+  pcChoose = pcPlay;
+  console.log(`${userChoose} --- ${pcChoose}`)
+}
 
+//Comparar jugadas
 gameOptionsElement.addEventListener("click", saveUserOption);
+gameOptionsElement.addEventListener("click",randomPcPlay)

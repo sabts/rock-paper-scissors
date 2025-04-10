@@ -35,6 +35,7 @@ body{
     display: flex;
     gap: 4rem;
     align-items: center;
+    margin: 0 auto;
 }
 .game-modes{
     display: flex;
