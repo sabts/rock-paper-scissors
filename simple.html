@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>simple version</title>
+  </head>
+  <body>
+    <header class="header">
+        <div class="score">
+            <span class="score-title">YOU</span>
+            <span id="points-user" class="score-points">0</span>
+        </div>
+        <div class="score">
+            <span class="score__title">PC</span>
+            <span id="points-pc" class="score__points">0</span>
+          </div>
+    </header>
+    <main>
+        <div id="game-icon" class="game-items game-item-simple">
+            <div class="game-item game-item--paper-simple" data-icon="paper">
+                <img src="/assets/icon-paper.svg" class="game-item__image" alt="icon paper">
+            </div>
+            <div class="game-item game-item--rock-simple" data-icon="Scissors">
+                <img src="/assets/icon-scissors.svg" class="game-item__image" alt="icon sissors">
+            </div>
+            <div class="game-item game-item--rock-simple" data-icon="rock">
+                <img src="/assets/icon-rock.svg" class="game-item__image" alt="icon rock">
+            </div>
+        </div>
+        <div id="games-result" class="game-result hide">
+            <div>
+                <h2>Your Picked</h2>
+                <div class="game-item game-item-result">
+                    <img id="picked-user-image" src="/assets/icon-scissors.svg">
+                </div>
+            </div>
+            <div>
+                <h2 id="game-result">YOU WIN</h2>
+                <button id="play-again">PLAY AGAIN</button>
+            </div>
+            <div>
+                <h2>PC Picked</h2>
+                <div class="game-item game-item-reault">
+                    <img id="picked-pc-image" src="/assets/icon-scissors.svg">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+    <script src="./js/scripts.js"></script>
+  </body>

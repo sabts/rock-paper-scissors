@@ -1,3 +1,8 @@
+:root{
+ --gradient:radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%);
+ --text-color: white;
+ --text-title-size: 4rem
+}
 *{
     box-sizing: border-box;
 }
@@ -19,20 +24,45 @@ nav ul{
     margin-bottom: 0;
 }
 body{
-    background-image: radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%);
+    background-image: var(--gradient);
     margin: 0;
     font-family: sans-serif;
     min-height: 100vh;
+    padding: 4rem;
 }
 .home-container{
     width: 800px;
-    padding: 3rem;
     display: flex;
-    justify-content: center;
+    gap: 4rem;
     align-items: center;
 }
 .game-modes{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16rem;
+    text-align: center;
+}
+.game-modes-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.photo-home{
+    width: 304px;
+    margin-bottom: 2rem;
+}
+.text{
+    color: var(--text-color);
+}
+
+.title{
+    font-size: var(--text-title-size);
+    align-items: center;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.game-item__image{
+    pointer-events: none;
 }
