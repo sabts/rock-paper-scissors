@@ -5,6 +5,7 @@ const gameOptionsElement = document.getElementById("game-icon");
 const selectedElement = document.getElementById("games-result");
 const resultgameElement = document.getElementById("game-result");
 const pickedImageElement = document.getElementById("picked-user-image");
+const pickedPcImageElement = document.getElementById("picked-pc-image");
 const userPointsElements = document.getElementById("points-user");
 const pcPointsElements = document.getElementById("points-pc");
 const playAgainButtonElement = document.getElementById("play-again");
@@ -29,27 +30,24 @@ let pcChoose = "";
 let userPoints = 0;
 let pcPoints = 0;
 
-// Detectar dónde hacemos click
-// Guardar nuestra jugada
 const saveUserOption = event => {
-  userChoose = event.target.dataset.icon;
-  pickedImageElement = imageSrc[event.target.dataset.icon];
+  if (event.target.classList.contains('game-item')) {
+    userChoose = event.target.dataset.icon;
+    pickedImageElement.src = imageSrc[userChoose];  
+    randomPcPlay();  
+    userVsPcChoose(); 
+  }
 };
 
 //Generar una jugada aleatoria para el ordenador y guardarla:
 //Simple
 const randomPcPlay = () => {
-  gameOptions.playerSelect = true;
-
   const randomPlay = Math.floor(Math.random() * gameOptions.length);
-  const pcPlay = gameOptions[randomPlay];
-
-  pcChoose = pcPlay;
-  //console.log(`user:${userChoose}  pc:${pcChoose}`)
+  pcChoose = gameOptions[randomPlay];
+  pickedPcImageElement.src = imageSrc[pcChoose]; 
 };
 
 //Comparar jugadas, Mostrar resultado, Asignar puntos
-
 const userVsPcChoose = () => {
   if (userChoose === pcChoose) {
     //console.log('empate')
@@ -57,9 +55,8 @@ const userVsPcChoose = () => {
     gameOptionsElement.classList.add("hide");
     pickedImageElement.classList.remove("item__image");
     pickedImageElement.classList.add("image-item");
-    //replace(`${item__image} ,game-${item.target.dataset}` analizar el game-{item}
     resultgameElement.textContent = "TIE";
-  } else if (rules[userChoose]) {
+  } else if (rules[userChoose][pcChoose]) {
     // console.log('ganaste')
     selectedElement.classList.remove("hide");
     gameOptionsElement.classList.add("hide");
@@ -83,11 +80,10 @@ const userVsPcChoose = () => {
 };
 
 const playAgain = () => {
-  if (playAgainButtonElement === true);
-  {
-    gameOptionsElement.classList.remove("hide");
-    selectedElement.classList.add("hide");
-  }
+  gameOptionsElement.classList.remove("hide");
+  selectedElement.classList.add("hide");
+  userChoose = '';
+  pcChoose = '';
 };
 
 gameOptionsElement.addEventListener("click", saveUserOption);
