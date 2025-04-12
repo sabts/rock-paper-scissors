@@ -11,19 +11,22 @@ const pcPointsElements = document.getElementById("points-pc");
 const playAgainButtonElement = document.getElementById("play-again");
 
 const rules = {
-  paper: { rock: true, scissor: false },
-  rock: { scissor: true, paper: false },
-  scissor: { paper: true, rock: false },
+  paper: { rock: true, scissor: false, spock:true, lizard:false},
+  rock: { scissor: true, paper: false, lizard:true, spock:false},
+  scissor: { paper: true, rock: false, lizard:true, spock: false},
+  spock: { scissor: true, rock: true, lizard:false, paper: false},
+  lizard: { scissor: false, rock: false, spock:true, paper: true},
 };
 
 const imageSrc = {
   paper: "/assets/icon-paper.svg",
   rock: "/assets/icon-rock.svg",
   scissor: "/assets/icon-scissors.svg",
+  spock: "/assets/icon-spock.svg",
+  lizard: "/assets/icon-lizard.svg"
 };
 
-const gameOptions = ["paper", "scissor", "rock"];
-const gameOptionsAdvanced = ["paper", "scissor", "rock", "spok", "lagarto"];
+const gameOptions = ["paper", "scissor", "rock", "spock", "lizard"];
 
 let userChoose = "";
 let pcChoose = "";
@@ -39,16 +42,11 @@ const saveUserOption = event => {
   }
 };
 
-//Generar una jugada aleatoria para el ordenador y guardarla:
-//Simple
-const randomPcPlay = () => {
-  const randomPlay = Math.floor(Math.random() * gameOptions.length);
-  pcChoose = gameOptions[randomPlay];
-  pickedPcImageElement.src = imageSrc[pcChoose]; 
-};
-
-//Comparar jugadas, Mostrar resultado, Asignar puntos
 const userVsPcChoose = () => {
+ // let bordeChange = document.querySelectorAll(".game-item");
+ // const userborder= bordeChange.classList.add(userChoose);
+//const pcborder = document.querySelector(pcChoose);
+  
   if (userChoose === pcChoose) {
     //console.log('empate')
     selectedElement.classList.remove("hide");
@@ -79,14 +77,18 @@ const userVsPcChoose = () => {
   }
 };
 
+const randomPcPlay = () => {
+  const randomPlay = Math.floor(Math.random() * gameOptions.length);
+  pcChoose = gameOptions[randomPlay];
+  pickedPcImageElement.src = imageSrc[pcChoose]; 
+};
+
 const playAgain = () => {
+  gameOptionsElement.classList.remove("paper", "scissor", "rock", "spock", "lizard");
   gameOptionsElement.classList.remove("hide");
   selectedElement.classList.add("hide");
-  userChoose = '';
-  pcChoose = '';
+  gameOptionsElement.classList.remove("item__image");
 };
 
 gameOptionsElement.addEventListener("click", saveUserOption);
-gameOptionsElement.addEventListener("click", randomPcPlay);
-gameOptionsElement.addEventListener("click", userVsPcChoose);
 playAgainButtonElement.addEventListener("click", playAgain);
