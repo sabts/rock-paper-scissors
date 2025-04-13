@@ -216,7 +216,37 @@ body{
         left: 500px;
     }
 }
+/* Solo para cambiar los bordes en JavaScript*/
+.style-rock {
+    border-color: var(--rock-color);
+    box-shadow: 0px 5px 0px 0px var(--rock-color-shadow), inset 0px 5px rgba(0, 0, 0, 0.20);
+  }
+  
+  .style-paper {
+    border-color: var(--paper-color);
+    box-shadow: 0px 5px 0px 0px var(--paper-color-shadow), inset 0px 5px rgba(0, 0, 0, 0.20);
+  }
+  
+  .style-scissor {
+    border-color: var(--scissor-color);
+    box-shadow: 0px 5px 0px 0px var(--scissor-color-shadow), inset 0px 5px rgba(0, 0, 0, 0.20);
+  }
+  
+  .style-lizard {
+    border-color: var(--lizard-color);
+    box-shadow: 0px 5px 0px 0px var(--lizard-color-shadow), inset 0px 5px rgba(0, 0, 0, 0.20);
+  }
+  
+  .style-spock {
+    border-color: var(--spock-color);
+    box-shadow: 0px 5px 0px 0px var(--spock-color-shadow), inset 0px 5px rgba(0, 0, 0, 0.20);
+  }
 
+  /*Es lo unico que se me ocurre para que no me cambie la posición en el resultad*/
+.result{
+     border-color: var(--spock-color);
+    box-shadow: 0px 5px 0px 0px var(--spock-color-shadow), inset 0px 5px rgba(0, 0, 0, 0.20);
+}
 .score{
     display: flex;
     flex-direction: column;
@@ -259,9 +289,10 @@ body{
 }
 .game-result{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-self: center;
+    justify-content: center;
+    width: 100px;
     gap: 1.5rem;
     text-align: center;
 }
@@ -273,13 +304,13 @@ body{
 .button{
     border-radius: 8px;
     height: 48px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 2.5px;
 }
 
 .button-primary{
-    width: 200px;
+    width: 140px;
     border: none;
     background-image: var(--button-color);
     color: #3B4262;
@@ -294,7 +325,7 @@ body{
 }
 
 .hide{
-    display: none;
+  display: none;
 }
 
 @media screen and (min-width: 1040px) {
@@ -328,4 +359,11 @@ body{
         justify-content: center;
         gap: 7rem;
     }
+    .button{
+        font-size: 16px;
+
+    }
+    
+    .button-primary{
+        width: 200px;}
 }

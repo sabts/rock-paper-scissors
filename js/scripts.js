@@ -9,6 +9,8 @@ const pickedPcImageElement = document.getElementById("picked-pc-image");
 const userPointsElements = document.getElementById("points-user");
 const pcPointsElements = document.getElementById("points-pc");
 const playAgainButtonElement = document.getElementById("play-again");
+const userResultElement = document.querySelector(".user-result");
+const pcResultElement = document.querySelector(".pc-result");
 
 const rules = {
   paper: { rock: true, scissor: false, spock:true, lizard:false},
@@ -27,6 +29,8 @@ const imageSrc = {
 };
 
 const gameOptions = ["paper", "scissor", "rock", "spock", "lizard"];
+const styleClasses = ['style-rock', 'style-paper', 'style-scissor', 'style-lizard', 'style-spock']
+
 
 let userChoose = "";
 let pcChoose = "";
@@ -43,16 +47,19 @@ const saveUserOption = event => {
 };
 
 const userVsPcChoose = () => {
- // let bordeChange = document.querySelectorAll(".game-item");
- // const userborder= bordeChange.classList.add(userChoose);
-//const pcborder = document.querySelector(pcChoose);
   
+  styleClasses.forEach(style => {
+    userResultElement.classList.remove(style);
+    pcResultElement.classList.remove(style);
+  });
+
   if (userChoose === pcChoose) {
     //console.log('empate')
     selectedElement.classList.remove("hide");
     gameOptionsElement.classList.add("hide");
     pickedImageElement.classList.remove("item__image");
     pickedImageElement.classList.add("image-item");
+    
     resultgameElement.textContent = "TIE";
   } else if (rules[userChoose][pcChoose]) {
     // console.log('ganaste')
@@ -75,6 +82,9 @@ const userVsPcChoose = () => {
     pcPoints++;
     pcPointsElements.textContent = pcPoints;
   }
+
+  userResultElement.classList.add(`style-${userChoose}`);
+  pcResultElement.classList.add(`style-${pcChoose}`); 
 };
 
 const randomPcPlay = () => {
