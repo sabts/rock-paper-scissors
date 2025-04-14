@@ -13,11 +13,11 @@ const userResultElement = document.querySelector(".user-result");
 const pcResultElement = document.querySelector(".pc-result");
 
 const rules = {
-  paper: { rock: true, scissor: false, spock:true, lizard:false},
-  rock: { scissor: true, paper: false, lizard:true, spock:false},
-  scissor: { paper: true, rock: false, lizard:true, spock: false},
-  spock: { scissor: true, rock: true, lizard:false, paper: false},
-  lizard: { scissor: false, rock: false, spock:true, paper: true},
+  paper: { rock: true, scissor: false, spock: true, lizard: false },
+  rock: { scissor: true, paper: false, lizard: true, spock: false },
+  scissor: { paper: true, rock: false, lizard: true, spock: false },
+  spock: { scissor: true, rock: true, lizard: false, paper: false },
+  lizard: { scissor: false, rock: false, spock: true, paper: true },
 };
 
 const imageSrc = {
@@ -25,12 +25,17 @@ const imageSrc = {
   rock: "/assets/icon-rock.svg",
   scissor: "/assets/icon-scissors.svg",
   spock: "/assets/icon-spock.svg",
-  lizard: "/assets/icon-lizard.svg"
+  lizard: "/assets/icon-lizard.svg",
 };
 
-const gameOptions = ["paper", "scissor", "rock", "spock", "lizard"];
-const styleClasses = ['style-rock', 'style-paper', 'style-scissor', 'style-lizard', 'style-spock']
-
+const gameOptions = ["paper", "scissor", "rock"];
+const styleClasses = [
+  "style-rock",
+  "style-paper",
+  "style-scissor",
+  "style-lizard",
+  "style-spock",
+];
 
 let userChoose = "";
 let pcChoose = "";
@@ -38,16 +43,16 @@ let userPoints = 0;
 let pcPoints = 0;
 
 const saveUserOption = event => {
-  if (event.target.classList.contains('game-item')) {
+  if (event.target.classList.contains("game-item")) {
     userChoose = event.target.dataset.icon;
-    pickedImageElement.src = imageSrc[userChoose];  
-    randomPcPlay();  
-    userVsPcChoose(); 
+    pickedImageElement.src = imageSrc[userChoose];
+    randomPcPlay();
+    userVsPcChoose();
   }
 };
 
 const userVsPcChoose = () => {
-  
+  //para que solo de click en en el icono: if(!saveUserOption)
   styleClasses.forEach(style => {
     userResultElement.classList.remove(style);
     pcResultElement.classList.remove(style);
@@ -59,7 +64,7 @@ const userVsPcChoose = () => {
     gameOptionsElement.classList.add("hide");
     pickedImageElement.classList.remove("item__image");
     pickedImageElement.classList.add("image-item");
-    
+
     resultgameElement.textContent = "TIE";
   } else if (rules[userChoose][pcChoose]) {
     // console.log('ganaste')
@@ -82,19 +87,28 @@ const userVsPcChoose = () => {
     pcPoints++;
     pcPointsElements.textContent = pcPoints;
   }
+  if (document.body.dataset.mode === "advance") {
+    gameOptions.push("spock", "lizard");
+  }
 
   userResultElement.classList.add(`style-${userChoose}`);
-  pcResultElement.classList.add(`style-${pcChoose}`); 
+  pcResultElement.classList.add(`style-${pcChoose}`);
 };
 
 const randomPcPlay = () => {
   const randomPlay = Math.floor(Math.random() * gameOptions.length);
   pcChoose = gameOptions[randomPlay];
-  pickedPcImageElement.src = imageSrc[pcChoose]; 
+  pickedPcImageElement.src = imageSrc[pcChoose];
 };
 
 const playAgain = () => {
-  gameOptionsElement.classList.remove("paper", "scissor", "rock", "spock", "lizard");
+  gameOptionsElement.classList.remove(
+    "paper",
+    "scissor",
+    "rock",
+    "spock",
+    "lizard"
+  );
   gameOptionsElement.classList.remove("hide");
   selectedElement.classList.add("hide");
   gameOptionsElement.classList.remove("item__image");
